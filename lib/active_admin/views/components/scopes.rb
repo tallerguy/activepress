@@ -9,7 +9,7 @@ module ActiveAdmin
       def default_class_name
         "scopes table_tools_segmented_control"
       end
-      
+
       def tag_name
         'ul'
       end
@@ -33,7 +33,7 @@ module ActiveAdmin
           a :href => url_for(params.merge(:scope => scope.id, :page => 1)), :class => "table_tools_button" do
             text_node scope_name
             span :class => 'count' do
-              "(" + get_scope_count(scope).to_s + ")"
+              # "(" + get_scope_count(scope).to_s + ")"
             end
           end
         end
@@ -57,7 +57,8 @@ module ActiveAdmin
 
       # Return the count for the scope passed in.
       def get_scope_count(scope)
-        scope_chain(scope, scoping_class).count
+        count = scope_chain(scope, scoping_class).count
+        count.class == Fixnum ? count : count.length
       end
 
       def scoping_class

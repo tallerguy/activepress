@@ -35,8 +35,11 @@ $(function(){
   $('.editor').markItUp(mySettings);
   
   // yeah I know... I will refactor it sometime -----------------------------------
-   $('.sidebar.modal form .filter_form_field').wrapAll('<div class="modal-body"/>');
-   $('.sidebar.modal form .filter_form_field label').removeClass('label');
+  $('.sidebar.modal form .filter_form_field').wrapAll('<div class="modal-body"/>');
+  $('.sidebar.modal form .filter_form_field label').removeClass('label');
+   
+  // bootstrap expects '...' on pagination to be an anchor
+  $('.page.disabled').wrapInner('<a/>') ;
    
   // thumbnails on forms-----------------------------------------------------------
   $('form .thumbnail').each(function(){

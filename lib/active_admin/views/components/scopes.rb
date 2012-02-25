@@ -33,7 +33,7 @@ module ActiveAdmin
           a :href => url_for(params.merge(:scope => scope.id, :page => 1)), :class => "table_tools_button" do
             text_node scope_name
             span :class => 'count' do
-              # "(" + get_scope_count(scope).to_s + ")"
+              "(" + get_scope_count(scope).to_s + ")"
             end
           end
         end
@@ -57,8 +57,12 @@ module ActiveAdmin
 
       # Return the count for the scope passed in.
       def get_scope_count(scope)
-        count = scope_chain(scope, scoping_class).count
-        count.class == Fixnum ? count : count.length
+        resource = scope_chain(scope, scoping_class)
+        if resource.respond_to?(:length)
+          resource.length
+        else
+          resource.count
+        end
       end
 
       def scoping_class

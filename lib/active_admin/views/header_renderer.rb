@@ -16,7 +16,7 @@ module ActiveAdmin
         if active_admin_namespace.site_title_image.blank?
          title_text
         else
-          title_image
+         title_image
         end
       end
 

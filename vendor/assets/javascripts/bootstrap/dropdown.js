@@ -33,7 +33,6 @@
 
         clearMenus()
         !isActive && li.toggleClass('open')
-        return false
       })
     })
   }

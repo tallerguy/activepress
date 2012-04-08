@@ -1,3 +1,4 @@
+*.orig
 ## MAC OS
 .DS_Store
 
@@ -33,3 +34,6 @@ test-rails*
 public
 .rvmrc
 .rspec
+.rails-version
+.rbenv-version
+

@@ -48,9 +48,11 @@ module ActiveAdmin
         end
 
         def default_welcome_section
-          para do
-            span I18n.t('active_admin.dashboard_welcome.welcome')
-            span I18n.t('active_admin.dashboard_welcome.call_to_action')
+          div :id => "dashboard_default_message" do
+            para do
+              span I18n.t('active_admin.dashboard_welcome.welcome')
+              span I18n.t('active_admin.dashboard_welcome.call_to_action')
+            end
           end
         end
 

@@ -17,6 +17,10 @@ describe ActiveAdmin::ViewHelpers::FilterFormHelper do
       false
     end
 
+    def view.a_helper_method
+      "A Helper Method"
+    end
+
     view
   end
 
@@ -160,6 +164,11 @@ describe ActiveAdmin::ViewHelpers::FilterFormHelper do
           body.should have_tag("option", "Title One")
           body.should have_tag("option", "Title Two")
         end
+
+        it "should render the collection in the context of the view" do
+          body = filter(:title, :as => :select, :collection => proc{[a_helper_method]})
+          body.should have_tag("option", "A Helper Method")
+        end
       end
     end
 
@@ -178,14 +187,5 @@ describe ActiveAdmin::ViewHelpers::FilterFormHelper do
       end
     end
 
-    context "when polymorphic relationship" do
-      let(:body) do
-        search = ActiveAdmin::Comment.search
-        active_admin_filters_form_for(search, [{ :attribute => :resource}])
-      end
-      it "should not generate any field" do
-        body.should have_tag("form", :attributes => { :method => 'get' })
-      end
-    end
   end # belongs to
 end

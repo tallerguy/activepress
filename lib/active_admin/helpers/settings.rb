@@ -20,7 +20,6 @@ module ActiveAdmin
   module Settings
     extend ActiveSupport::Concern
 
-
     def read_default_setting(name)
       default_settings[name]
     end
@@ -30,7 +29,6 @@ module ActiveAdmin
     def default_settings
       self.class.default_settings
     end
-
 
     module ClassMethods
 

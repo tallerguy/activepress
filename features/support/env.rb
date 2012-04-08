@@ -12,7 +12,7 @@ ENV["RAILS"] = detect_rails_version
 ENV["RAILS_ENV"] ||= "cucumber"
 ENV['RAILS_ROOT'] = File.expand_path("../../../spec/rails/rails-#{ENV["RAILS"]}", __FILE__)
 
-
+require 'debugger'
 require 'rubygems'
 require "bundler"
 Bundler.setup

@@ -57,10 +57,6 @@ describe ActiveAdmin::Application do
     application.admin_notes.should be_nil
   end
 
-  it "should allow comments by default" do
-    application.allow_comments.should == true
-  end
-
   describe "authentication settings" do
 
     it "should have no default current_user_method" do

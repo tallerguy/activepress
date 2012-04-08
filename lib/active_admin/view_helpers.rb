@@ -6,8 +6,8 @@ module ActiveAdmin
 
     include AssignsWithIndifferentAccessHelper
     include ActiveAdminApplicationHelper
-    include RendererHelper
     include AutoLinkHelper
+    include BreadcrumbHelper
     include DisplayHelper
     include IconHelper
     include MethodOrProcHelper

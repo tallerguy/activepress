@@ -24,6 +24,10 @@ describe ActiveAdmin::FormBuilder do
       end
     end
 
+    def view.a_helper_method
+      "A Helper Method"
+    end
+
     view
   end
 
@@ -61,17 +65,6 @@ describe ActiveAdmin::FormBuilder do
                                                           :value => "Submit Me" })
       body.should have_tag("input", :attributes => {  :type => "submit",
                                                           :value => "Another Button" })
-    end
-  end
-
-  context "when polymorphic relationship" do
-    it "should raise error" do
-      lambda {
-        comment = ActiveAdmin::Comment.new
-        active_admin_form_for comment, :url => "admins/comments" do |f|
-          f.inputs :resource
-        end
-      }.should raise_error(Formtastic::PolymorphicInputWithoutCollectionError)
     end
   end
 
@@ -179,6 +172,7 @@ describe ActiveAdmin::FormBuilder do
         body.scan(/type=\"radio\"/).size.should == 2
       end
     end
+
   end
 
   context "with inputs 'for'" do

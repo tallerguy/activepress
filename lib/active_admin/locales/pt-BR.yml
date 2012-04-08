@@ -15,6 +15,7 @@
     new_model: "Cadastrar %{model}"
     create_model: "Cadastrar %{model}"
     edit_model: "Editar %{model}"
+    update_model: "Atualizar %{model}"
     delete_model: "Excluir %{model}"
     details: "Ver"
     cancel: "Cancelar"
@@ -46,7 +47,17 @@
     any: "Qualquer"
     blank_slate:
       content: "Não existem %{resource_name} ainda."
-      link: "Cadastrar"
+      link: "Crie uma"
+    comments:
+      body: "Mensagem"
+      author: "Autor"
+      title: "Commentário"
+      add: "Adicionar Commentário"
+      resource: "Recurso"
+      no_comments_yet: "Sem comentários."
+      title_content: "Comentários (%{count})"
+      errors:
+        empty_text: "O comentário não foi salvo, o texto está vazio."
 
 # Formtastic
   formtastic:

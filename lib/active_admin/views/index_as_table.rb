@@ -13,12 +13,14 @@ module ActiveAdmin
     # column method:
     #
     #     index do
+    #       selectable_column
     #       column :title
     #     end
     #
     # If the default title does not work for you, pass it as the first argument:
     #
     #     index do
+    #       selectable_column
     #       column "My Custom Title", :title
     #     end
     #
@@ -30,6 +32,7 @@ module ActiveAdmin
     # within the context of the view for each of the objects in the collection.
     #
     #     index do
+    #       selectable_column
     #       column "Title" do |post|
     #         link_to post.title, admin_post_path(post)
     #       end
@@ -41,6 +44,7 @@ module ActiveAdmin
     # To setup links to View, Edit and Delete a resource, use the default_actions method:
     #
     #     index do
+    #       selectable_column
     #       column :title
     #       default_actions
     #     end
@@ -48,6 +52,7 @@ module ActiveAdmin
     # Alternatively, you can create a column with custom links:
     #
     #     index do
+    #       selectable_column
     #       column :title
     #       column "Actions" do |post|
     #         link_to "View", admin_post_path(post)
@@ -94,14 +99,16 @@ module ActiveAdmin
 
       def build(page_presenter, collection)
         table_options = {
-          :id => active_admin_config.plural_underscored_resource_name,
+          :id => active_admin_config.resource_name.plural,
           :sortable => true,
           :class => "index_table zebra-striped",
-          :i18n => active_admin_config.resource_class
+          :i18n => active_admin_config.resource_class,
+          :paginator => page_presenter[:paginator] != false
         }
 
         table_for collection, table_options do |t|
-          instance_exec(t, &page_presenter.block)
+          table_config_block = page_presenter.block || default_table
+          instance_exec(t, &table_config_block)
         end
       end
 
@@ -109,11 +116,27 @@ module ActiveAdmin
         insert_tag IndexTableFor, *args, &block
       end
 
+      def default_table
+        proc do
+          id_column
+          resource_class.content_columns.each do |col|
+            column col.name.to_sym
+          end
+          default_actions
+        end
+      end
+
       #
       # Extend the default ActiveAdmin::Views::TableFor with some
       # methods for quickly displaying items on the index page
       #
       class IndexTableFor < ::ActiveAdmin::Views::TableFor
+        
+        # Display a column for checkbox
+        def selectable_column
+          return unless active_admin_config.batch_actions.any?
+          column( resource_selection_toggle_cell, { :class => "selectable" } ) { |resource| resource_selection_cell( resource ) }
+        end
 
         # Display a column for the id
         def id_column

@@ -44,8 +44,9 @@ module ActiveAdmin
           li_element.add_class "active" if current?(item)
 
           if item.children.any?
-            li_element.add_class "has_nested"
-            text_node link_to(item.name, item.url || "#")
+            li_element.add_class "dropdown"
+            li_element.set_attribute 'data-dropdown', 'dropdown'
+            text_node link_to(item.name, item.url || "#", class: 'dropdown-toggle')
             render_nested_menu(item)
           else
             link_to item.name, item.url
@@ -54,7 +55,7 @@ module ActiveAdmin
       end
 
       def render_nested_menu(item)
-        ul do
+        ul class: 'dropdown-menu' do
           displayable_items(item.children).each do |child|
             build_menu_item child
           end

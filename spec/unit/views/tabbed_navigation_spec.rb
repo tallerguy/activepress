@@ -72,18 +72,10 @@ describe ActiveAdmin::Views::TabbedNavigation do
     end
 
     describe "marking current item" do
-
       it "should add the 'current' class to the li" do
         assigns[:current_tab] = "Blog Posts"
         html.should have_tag("li", :attributes => { :class => "active" })
       end
-
-      it "should add the 'current' and 'has_nested' classes to the li and 'current' to the sub li" do
-        assigns[:current_tab] = "Reports/A Sub Reports"
-        html.should have_tag("li", :attributes => { :id => "reports", :class => "active has_nested" })
-        html.should have_tag("li", :attributes => { :id => "a_sub_reports", :class => "active" })
-      end
-
     end
 
   end

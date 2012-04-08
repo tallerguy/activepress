@@ -25,18 +25,19 @@
   /* DROPDOWN PLUGIN DEFINITION
    * ========================== */
 
-  $.fn.dropdown = function ( selector ) {
-    return this.each(function () {
-      $(this).delegate(selector || d, 'click', function (e) {
-        var li = $(this).parent('li')
-          , isActive = li.hasClass('open')
-
-        clearMenus()
-        !isActive && li.toggleClass('open')
-        return false
-      })
-    })
-  }
+   $.fn.dropdown = function ( selector ) {
+     return this.each(function () {
+       $(selector || d).parent('li').hover(over, out);
+       
+       function over () {
+         $(this).addClass('open')
+       }
+       
+       function out() {
+         $(this).removeClass('open')
+       }
+     })
+   }
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS
    * =================================== */

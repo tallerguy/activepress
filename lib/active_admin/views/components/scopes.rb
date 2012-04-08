@@ -9,7 +9,7 @@ module ActiveAdmin
       def default_class_name
         "scopes table_tools_segmented_control"
       end
-      
+
       def tag_name
         'ul'
       end
@@ -57,7 +57,12 @@ module ActiveAdmin
 
       # Return the count for the scope passed in.
       def get_scope_count(scope)
-        scope_chain(scope, scoping_class).count
+        resource = scope_chain(scope, scoping_class)
+        if resource.respond_to?(:length)
+          resource.length
+        else
+          resource.count
+        end
       end
 
       def scoping_class

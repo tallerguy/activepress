@@ -213,25 +213,6 @@ describe ActiveAdmin::FormBuilder do
     end
   end
 
-
-  {
-    "input :title, :as => :string"        => /id\=\"post_title\"/,
-    "input :title, :as => :text"          => /id\=\"post_title\"/,
-    "input :created_at, :as => :time"     => /id\=\"post_created_at\[time\]\"/,
-    "input :created_at, :as => :datetime" => /id\=\"post_created_at\[time\]\"/,
-    "input :created_at, :as => :date"     => /id\=\"post_created_at\[date\]\"/,
-  }.each do |source, regex|
-   it "should properly buffer #{source}" do
-     body = build_form do |f|
-       f.inputs do
-         f.instance_eval(source)
-         f.instance_eval(source)
-       end
-     end
-     body.scan(regex).size.should == 2
-   end
-  end
-
   describe "datepicker input" do
     let :body do
       build_form do |f|

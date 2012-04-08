@@ -12,7 +12,6 @@ module ActiveAdmin
       @config ||= Resource.new(namespace, Category, options)
     end
 
-
     describe "underscored resource name" do
       context "when class" do
         it "should be the underscored singular resource name" do
@@ -56,20 +55,17 @@ module ActiveAdmin
       describe "I18n integration" do
         describe "singular name" do
           it "should return the titleized model_name.human" do
-            Category.model_name.should_receive(:human).and_return "Da category"
+            Category.model_name.should_receive(:human).and_return "Da Category"
 
-            config.resource_name.should == "Da Category"
+            config.singular_human_name.should == "Da Category"
           end
         end
 
         describe "plural name" do
           it "should return the titleized plural version defined by i18n if available" do
-            Category.model_name.should_receive(:underscore).and_return "category"
-            Category.model_name.should_not_receive(:i18n_key) # Not implemented in Rails 3.0.0
-            I18n.should_receive(:translate!).
-              with("activerecord.models.category.other").
-              and_return("Da categories")
-            config.plural_resource_name.should == "Da Categories"
+            Category.stub_chain(:model_name, :human).and_return('Bank Account')
+              
+            config.plural_human_name.should == "Bank Accounts"
           end
         end
 

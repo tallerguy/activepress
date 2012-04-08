@@ -5,7 +5,7 @@ module ActiveAdmin
       class Index < Base
 
         def title
-          active_admin_config.plural_resource_name
+          active_admin_config.plural_human_name
         end
 
         def config

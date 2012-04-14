@@ -2,28 +2,36 @@ module ActiveAdmin
   module Views
     class UtilityNav < Component
       def tag_name
-        "p"
+        "ul"
       end
 
       def build(namespace)
-        super(:id => "utility_nav", :class => "header-item")
+        super(:id => "utility_nav", :class => "nav secondary-nav")
         @namespace = namespace
 
         if current_active_admin_user?
-          build_current_user
-          build_logout_link
+          li class: 'dropdown', 'data-dropdown' => 'dropdown' do
+            build_current_user
+            build_logout_link
+          end
         end
       end
 
       private
 
       def build_current_user
-        span display_name(current_active_admin_user), :class => "current_user"
+        a class: 'dropdown-toggle' do
+          display_name(current_active_admin_user)
+        end
       end
 
       def build_logout_link
         if @namespace.logout_link_path
-          text_node helpers.link_to(I18n.t('active_admin.logout'), active_admin_logout_path, :method => logout_method)
+          ul class: 'dropdown-menu' do
+            li do
+              text_node helpers.link_to(I18n.t('active_admin.logout'), active_admin_logout_path, :method => logout_method)
+            end
+          end
         end
       end
 

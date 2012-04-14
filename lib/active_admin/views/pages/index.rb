@@ -16,10 +16,10 @@ module ActiveAdmin
         # controller. Defaults to rendering the ActiveAdmin::Pages::Index::Table
         def main_content
           if active_admin_config.batch_actions.any? 
-            batch_action_form do
+            # batch_action_form do
               build_table_tools
               build_collection
-            end
+            # end
           else
             build_table_tools
             build_collection
@@ -29,7 +29,7 @@ module ActiveAdmin
         protected
 
         def build_extra_content
-          build_batch_action_popover
+          # build_batch_action_popover
         end
 
         def items_in_collection?

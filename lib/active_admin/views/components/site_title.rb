@@ -4,7 +4,7 @@ module ActiveAdmin
     class SiteTitle < Component
 
       def tag_name
-        'h1'
+        'div'
       end
 
       def build(namespace)
@@ -41,7 +41,7 @@ module ActiveAdmin
       end
 
       def title_text
-        helpers.render_or_call_method_or_proc_on(self, @namespace.site_title)
+        link_to(@namespace.site_title, '#', :class => 'brand')
       end
 
       def title_image

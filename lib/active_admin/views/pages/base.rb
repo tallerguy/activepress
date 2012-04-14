@@ -49,33 +49,23 @@ module ActiveAdmin
         end
 
         def build_header
-          insert_tag view_factory.header, active_admin_namespace, current_menu
-          # div class: 'topbar' do
-          #   div class: 'fill' do
-          #     div class: 'container-fluid' do
-          #       render view_factory.header
-          #     end
-          #   end
-          # end
-        end
-
-        def build_title_bar
-          insert_tag view_factory.title_bar, title, action_items_for_action
-          # div class: 'page-header row' do
-          #   build_titlebar_left
-          #   build_titlebar_right
-          # end
-        end
-
-        def build_titlebar_left
-          div class: "pull-left" do
-            build_title_tag
+          # insert_tag view_factory.header, active_admin_namespace, current_menu
+          div class: 'topbar' do
+            div class: 'fill' do
+              div class: 'container-fluid' do
+                insert_tag view_factory.header, active_admin_namespace, current_menu
+                # render view_factory.header
+              end
+            end
           end
         end
 
-        def build_titlebar_right
-          div class: "pull-right" do
-            build_action_items
+        def build_title_bar
+          # insert_tag view_factory.title_bar, title, action_items_for_action
+          div class: 'page-header row' do
+            insert_tag view_factory.title_bar, title, action_items_for_action
+            # build_titlebar_left
+            # build_titlebar_right
           end
         end
 

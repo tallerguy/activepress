@@ -34,13 +34,14 @@ module ActiveAdmin
 
     def commit_button(*args)
       content = with_new_form_buffer{ super }
+      content.gsub!('commit', 'primary')
       form_buffers.last << content.html_safe
     end
 
-    def cancel_link(url = nil, html_options = {}, li_attributes = {})
-      li_attributes[:class] ||= "cancel"
+    def cancel_link(url = nil, html_options = {}, attributes = {})
+      attributes[:class] ||= "btn cancel"
       url ||= {:action => "index"}
-      template.content_tag(:li, (template.link_to I18n.t('active_admin.cancel'), url, html_options), li_attributes)
+      template.content_tag(:div, (template.link_to I18n.t('active_admin.cancel'), url, html_options), attributes)
     end
 
     def commit_button_with_cancel_link

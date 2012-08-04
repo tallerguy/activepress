@@ -4,7 +4,7 @@ module ActiveAdmin
     class SiteTitle < Component
 
       def tag_name
-        'div'
+        'span'
       end
 
       def build(namespace)

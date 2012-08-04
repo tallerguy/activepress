@@ -2,49 +2,56 @@
 <html>
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-
   <title><%= [@page_title, active_admin_application.site_title].compact.join(" | ") %></title>
-
   <% ActiveAdmin.application.stylesheets.each do |style| %>
     <%= stylesheet_link_tag style.path %>
   <% end %>
   <% ActiveAdmin.application.javascripts.each do |path| %>
     <%= javascript_include_tag path %>
   <% end %>
-
   <%= csrf_meta_tag %>
 </head>
-<body class="logged_out <%= controller.action_name %>">
-  <div class="topbar">
-    <div class="fill">
+
+<body class="logged_out <%= controller.action_name %>" data-spy="scroll" data-target=".subnav" data-offset="40">
+
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
       <div class="container-fluid">
-        <a href="/" class="brand"><%= active_admin_application.site_title %></a>
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+        <a class="brand" href="/"><%= active_admin_application.site_title %></a>
       </div>
     </div>
-  </div>
+  </div><!-- end .navbar -->
 
   <div class="container-fluid">
-    <div class="content">
-      <div class="page-header">
-        <h2><%= t "active_admin.login" %></h2>
-      </div>
 
-      <% if flash.keys.any? %>
-        <% flash.each do |type, message| %>
-          <div class="alert-message <%= type %> fade in" data-alert="alert">
-            <a href="#" class="close">&times;</a>
-            <p><%= message %></p>
-          </div>
-        <% end %>
-      <% end %>
-      <div id="active_admin_content">
-        <%= yield %>
-      </div>
-    </div>
+    <div id="main">
+
+      <div class="page-header main-header row">
+        <h1><%= t "active_admin.login" %></h1>
+      </div><!-- end .page-header -->
+
+      <div class="row-fluid">
+        <div id="active_admin_content" class="content">
+          <% if flash.keys.any? %>
+            <% flash.each do |type, message| %>
+              <div class="alert <%= type %>">
+                <a href="#" class="close" data-dismiss="alert">×</a>
+                <%= message %>
+              </div>
+            <% end %>
+          <% end %>
+
+          <%= yield %>
+        </div><!-- end .content -->
+      </div><!-- end .row-fluid -->
+    </div><!-- end #main -->
 
     <div id="footer">
       <%= yield :footer %>
-    </div>
-  </div>
+    </div><!-- end #footer -->
+
+  </div><!-- end .container-fluid -->
+
 </body>
 </html>

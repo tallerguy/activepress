@@ -50,8 +50,8 @@ module ActiveAdmin
 
         def build_header
           # insert_tag view_factory.header, active_admin_namespace, current_menu
-          div class: 'topbar' do
-            div class: 'fill' do
+          div class: 'navbar navbar-fixed-top' do
+            div class: 'navbar-inner' do
               div class: 'container-fluid' do
                 insert_tag view_factory.header, active_admin_namespace, current_menu
                 # render view_factory.header
@@ -115,8 +115,8 @@ module ActiveAdmin
         end
 
         def alert(type='info', message, &block)
-          div :class => "alert-message #{type} fade in" do
-            a href: '#', class: 'close', 'data-alert' => 'alert' do
+          div :class => "alert alert-#{type}" do
+            a href: '#', class: 'close', 'data-dismiss' => 'alert' do
               '&times;'.html_safe
             end
 

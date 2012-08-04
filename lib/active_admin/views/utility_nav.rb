@@ -6,11 +6,11 @@ module ActiveAdmin
       end
 
       def build(namespace)
-        super(:id => "utility_nav", :class => "nav secondary-nav")
+        super(:id => "utility_nav", :class => "nav pull-right")
         @namespace = namespace
 
         if current_active_admin_user?
-          li class: 'dropdown', 'data-dropdown' => 'dropdown' do
+          li class: 'dropdown' do
             build_current_user
             build_logout_link
           end
@@ -20,7 +20,7 @@ module ActiveAdmin
       private
 
       def build_current_user
-        a class: 'dropdown-toggle' do
+        a class: 'dropdown-toggle', 'data-toggle' => 'dropdown', 'href' => '#' do
           display_name(current_active_admin_user)
         end
       end

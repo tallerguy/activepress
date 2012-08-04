@@ -2,14 +2,23 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery-ui-i18n
-//= require bootstrap/alerts
-//= require bootstrap/buttons
-//= require bootstrap/dropdown
-//= require bootstrap/modal
-//= require bootstrap/scrollspy
-//= require bootstrap/tabs
-//= require bootstrap/twipsy
-//= require bootstrap/popover
+
+//= require twitter-bootstrap/bootstrap-transition
+//= require twitter-bootstrap/bootstrap-alert
+//= require twitter-bootstrap/bootstrap-modal
+//= require twitter-bootstrap/bootstrap-dropdown
+//= require twitter-bootstrap/bootstrap-scrollspy
+//= require twitter-bootstrap/bootstrap-tab
+//= require twitter-bootstrap/bootstrap-tooltip
+//= require twitter-bootstrap/bootstrap-popover
+//= require twitter-bootstrap/bootstrap-button
+//= require twitter-bootstrap/bootstrap-collapse
+//= require twitter-bootstrap/bootstrap-carousel
+//= require twitter-bootstrap/bootstrap-typeahead
+//= require twitter-bootstrap/extensions/bootstrap-fileupload
+//= require twitter-bootstrap/extensions/bootstrap-inputmask
+//= require twitter-bootstrap/extensions/bootstrap-rowlink
+
 //= require markitup/jquery.markitup
 //= require markitup/sets/default/set
 //= require chosen.jquery.min

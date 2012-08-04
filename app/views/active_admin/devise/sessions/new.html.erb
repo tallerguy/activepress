@@ -1,5 +1,6 @@
 <div id="login">
   <% scope = Devise::Mapping.find_scope!(resource_name) %>
+
   <%= semantic_form_for(resource, :as => resource_name, :url => send(:"#{scope}_session_path")) do |f| %>
     <%= f.inputs do %>
       <% Devise.authentication_keys.each do |key| %>
@@ -17,7 +18,7 @@
     <% end %>
 
     <%= f.buttons do %>
-      <%= f.commit_button t('active_admin.login'), button_html: {class: 'btn large primary'} %>
+      <%= f.commit_button t('active_admin.login'), button_html: {class: 'btn btn-large btn-primary'} %>
     <% end %>
   <% end %>
 </div>

@@ -3,7 +3,7 @@ module ActiveAdmin
     class Header < Component
 
       def build(namespace, menu)
-        super(:id => "header")
+        # super(:id => "header")
 
         @namespace = namespace
         @menu = menu
@@ -19,7 +19,7 @@ module ActiveAdmin
       end
 
       def build_global_navigation
-        insert_tag view_factory.global_navigation, @menu, :class => 'header-item' 
+        insert_tag view_factory.global_navigation, @menu, :class => 'nav' 
       end
 
       def build_utility_navigation

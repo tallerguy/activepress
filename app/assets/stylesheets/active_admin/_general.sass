@@ -1,0 +1,124 @@
+.rounded-box
+  +border-radius(6px)
+  background-clip: padding-box
+  background-color: #fff
+  +box-shadow(0 1px 2px rgba(0,0,0,.2))
+  
+body
+  background-color: #f7f7f7
+  //PADDING TOP TEMPORARIO
+  padding-top: 40px
+
+#main
+  @extend .rounded-box
+  +border-top-radius(0)
+
+  .page-header
+    .file-byline
+      padding-top: 5px
+      color: #666
+      font-size: 12px
+      
+    &.main-header
+      background-color: #f5f5f5
+      padding: 20px
+      margin: 0
+
+      h1
+        padding-top: 5px
+      .btn-large
+        font-weight: bold
+
+  .content
+    padding: 15px
+
+
+
+
+
+
+// Image Effect
+// --------------------
+.image-effect
+  width: 140px
+  +float-left
+  position: relative
+  +pie-clearfix
+  
+  &.large
+    max-width: 100%
+    width: 100%
+    text-align: center
+    // width: 520px
+
+  .image-effect-inner
+    position: relative
+    +inline-block
+    max-width: 100%
+    vertical-align: bottom
+
+    // image-wrap:after pseudo element (overlaying container)
+    &:after
+      content: ''
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      +border-radius(5px)
+      +box-shadow(inset 0 0 3px rgba(#000, .7), inset 0 -1px 0 rgba(#000, .1))
+
+    img
+      vertical-align: bottom
+      // width: 100px
+      // width: 0px
+      max-width: 100%
+      +border-radius(4px)
+
+
+#sidebar
+  padding-top: 5px
+  .panel
+    margin-top: 20px
+
+  .modal-body
+    padding-bottom: 0
+
+  #sidebar-filter
+    @extend .rounded-box
+
+  #sidebar-tags
+    .modal-body
+      padding-right: 0
+      padding-left: 0
+
+    .nav-pills
+      a
+        +box-shadow(0 1px 0 rgba(#000, .1))
+        background-color: #fff
+        color: #484848
+        margin-right: 8px
+        margin-bottom: 4px
+        
+        &:hover
+          background-color: darken(#f7f7f7, 15%)
+          +box-shadow(0 1px 0 rgba(#000, .2))
+          span
+            &.badge
+              background-color: #fff
+              
+        span
+          &.badge
+            background-color: #e1e1e1
+            color: #666
+            +text-shadow(0 1px 0 rgba(#fff, 1))
+            
+            
+.help-block
+  color: #999
+.form-actions
+  button
+    margin-right: 8px
+  p.note
+    color: #999
+    line-height: 30px
